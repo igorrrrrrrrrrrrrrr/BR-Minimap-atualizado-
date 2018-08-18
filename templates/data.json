@@ -288,10 +288,10 @@
 },
   "discord": {
     "name": "discord.png",
-    "x": 3052,
-    "y": 3084,
-    "width": 356,
-    "height": 21 
+    "x": 3033,
+    "y": 3065,
+    "width": 394,
+    "height": 41 
 },
   "Obs": {
     "name": "Obs.png",
@@ -320,6 +320,13 @@
     "y": 3004,
     "width": 97,
     "height": 102 
+  },
+  "cbf": {
+    "name": "cbf.png",
+    "x": 3885,
+    "y": 2885,
+    "width": 208,
+    "height": 215
   }
 }
 
