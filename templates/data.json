@@ -125,13 +125,6 @@
 	"width": 209,
 	"height": 44 
 },
-    "mg": {
-        "name": "mg.png",
-        "x": 2274,
-        "y": 3020,
-        "width": 43,
-        "height": 45 
-},
     "allies": {
         "name": "allies.png",
         "x": 1576,
@@ -325,6 +318,13 @@
     "name": "cbff.png",
     "x": 3885,
     "y": 2885,
+    "width": 208,
+    "height": 215
+  },
+  "estados": {
+    "name": "estados.png",
+    "x": 2273,
+    "y": 2979,
     "width": 208,
     "height": 215
   }
