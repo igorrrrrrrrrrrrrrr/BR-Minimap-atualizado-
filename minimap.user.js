@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         ODNZone Minimap
+// @name         BRASIL-ZONE Minimap
 // @namespace    http://tampermonkey.net/
 // @version      2.0
 // @description  ODNZone Minimap
-// @author       olegispe#2453 Edited by Obsidian
+// @author       olegispe#2453 Edited by z0mb
 // @match        https://pixelzone.io/*
 // @match        http://pixelzone.io/*
-// @homepage     https://github.com/xDied/ODNMinimap/
-// @updateURL    https://raw.githubusercontent.com/xDied/ODNMinimap/blob/master/minimap.user.js
-// @downloadURL  https://raw.githubusercontent.com/xDied/ODNMinimap/blob/master/minimap.user.js
+// @homepage     https://github.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/
+// @updateURL    https://raw.githubusercontent.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/blob/master/minimap.user.js
+// @downloadURL  https://raw.githubusercontent.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/blob/master/minimap.user.js
 // @grant        none
 // ==/UserScript==
 
@@ -46,7 +46,7 @@ Number.prototype.between = function(a, b) {
   return this > min && this < max;
 };
 
-window.baseTepmlateUrl = 'https://raw.githubusercontent.com/xDied/ODNMinimap/master';
+window.baseTepmlateUrl = 'https://raw.githubusercontent.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/master';
 
 window.addEventListener('load', function () {
     //Regular Expression to get coordinates out of URL
@@ -83,14 +83,14 @@ window.addEventListener('load', function () {
     var div = document.createElement('div');
     div.setAttribute('class', 'post block bc2');
     div.innerHTML = '<div id="minimapbg" style="position: absolute; right: 1em; bottom: 1em;">' +
-        '<div class="posy" id="posyt" style="background-size: 97%; background-image: url(https://cdn.pbrd.co/images/HqZKYUY.png); color: rgb(250, 250, 250); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 6px;">' +
+        '<div class="posy" id="posyt" style="background-size: 97%; background-image: url(https://i.imgur.com/EjLefH5.png); color: rgb(250, 250, 250); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 6px;">' +
         '<div id="minimap-text" style="display: none;"></div>' +
         '<div id="minimap-box" style="position: relative;width:380px;height:260px">' +
         '<canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
         '</div><div id="minimap-config" style="line-height:20px;">' +
-        '<span id="hide-map" style="cursor:pointer;">ODN Minimap' +
+        '<span id="hide-map" style="cursor:pointer;">BRASIL-ZONE Minimap' +
         '</span><span id="follow-mouse" style="cursor:pointer;"' +
         '</span><span id="zoom-plus" style="cursor:pointer;font-weight:bold;"></span>' +
         '<span id="zoom-minus" style="cursor:pointer;font-weight:bold;"></span>' +
