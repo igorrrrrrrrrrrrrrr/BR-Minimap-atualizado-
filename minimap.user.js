@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      2.0
 // @description  ODNZone Minimap
-// @author       olegispe#2453 Edited by z0mb
+// @author       olegispe#2453 & Sr.Obsidian#7569 Edited by z0mb
 // @match        https://pixelzone.io/*
 // @match        http://pixelzone.io/*
 // @homepage     https://github.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/
