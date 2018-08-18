@@ -321,12 +321,12 @@
     "width": 208,
     "height": 215
   },
-  "estados": {
-    "name": "estados.png",
+  "estads": {
+    "name": "estads.png",
     "x": 2273,
     "y": 2979,
-    "width": 208,
-    "height": 215
+    "width": 257,
+    "height": 83
   }
 }
 
