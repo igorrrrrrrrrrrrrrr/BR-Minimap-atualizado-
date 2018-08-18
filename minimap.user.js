@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BRASIL-ZONE Minimap
 // @namespace    http://tampermonkey.net/
-// @version      2.0
+// @version      3.0
 // @description  BRASIL-ZONE Minimap
 // @author       olegispe#2453 & Sr.Obsidian#7569 Edited by z0mb
 // @match        https://pixelzone.io/*
