@@ -1,44 +1,16 @@
 // ==UserScript==
-// @name         BRASIL-ZONE Minimap
+// @name         ♛ 𝑩𝑹𝑨𝑺𝑰𝑳-𝒁𝑶𝑵𝑬 ♛ 𝑴𝑰𝑵𝑰𝑴𝑨𝑷𝑨 ♛
 // @namespace    http://tampermonkey.net/
-// @version      3.0
-// @description  BRASIL-ZONE Minimap
-// @author       olegispe#2453 & Sr.Obsidian#7569 Edited by z0mb
+// @version      1.0
+// @description  ♛ 𝑩𝑹𝑨𝑺𝑰𝑳-𝒁𝑶𝑵𝑬 ♛ 𝑴𝑰𝑵𝑰𝑴𝑨𝑷𝑨 ♛
+// @author       z0mb
 // @match        https://pixelzone.io/*
 // @match        http://pixelzone.io/*
-// @homepage     https://github.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/
+// @homepage     https://discord.io/brasil-zone
 // @updateURL    https://raw.githubusercontent.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/blob/master/minimap.user.js
 // @downloadURL  https://raw.githubusercontent.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/blob/master/minimap.user.js
 // @grant        none
 // ==/UserScript==
-
-var abcd = true;
-document.onkeydown = function (e) {
-  e = e || window.event;
-  switch (e.which || e.keyCode) {
-        case 77 : // 77 = "M"
-        abcd = !abcd;
-      console.log(abcd);
-        if (abcd == true){
-          toggleShow()
-             document.getElementById("minimap-box").style.display = "block";
-             document.getElementById("minimap-config").style.display = "block";
-             document.getElementById("minimap-text").style.display = "none";
-             document.getElementById("minimap-text").style.cursor = "default";
-        }else if (abcd == false){
-          toggleShow()
-        document.getElementById("minimap-box").style.display = "none";
-        document.getElementById("minimap-config").style.display = "none";
-        document.getElementById("minimap-text").style.display = "block";
-        document.getElementById("minimap-text").innerHTML = "Mostrar mapa";
-        document.getElementById("minimap-text").style.cursor = "pointer";
-        }
-     break;
-    case 187:
-      console.log("Ainda em construção");
-      break;
-  }
-}
 
 Number.prototype.between = function(a, b) {
   var min = Math.min.apply(Math, [a, b]),
@@ -49,10 +21,8 @@ Number.prototype.between = function(a, b) {
 window.baseTepmlateUrl = 'https://raw.githubusercontent.com/igorrrrrrrrrrrrrrr/BR-Minimap-atualizado-/master';
 
 window.addEventListener('load', function () {
-    //Regular Expression to get coordinates out of URL
-    re = /(.*)\/\?p=(\-?(?:\d*)),(\-?(?:\d*))/g;
     //Regular Expression to get coordinates from cursor
-    rec = /x\:(\d*) y\:(\d*)/g;
+    rec = /x\:(-?\d*) y\:(-?\d*)/g;
     gameWindow = document.getElementById("gameWindow");
     //DOM element of the displayed X, Y variables
     coorDOM = null;
@@ -65,7 +35,7 @@ window.addEventListener('load', function () {
     y = 0;
     //list of all available templates
     template_list = null;
-    zoomlevel = 8;
+    zoomlevel = 9;
     //toggle options
     toggle_show = true;
     toggle_follow = true; //if minimap is following window, x_window = x and y_window = y;
@@ -80,20 +50,23 @@ window.addEventListener('load', function () {
     //Cachebreaker to force refresh
     cachebreaker = null;
 
+	vers = "♛ 𝑩𝑹𝑨𝑺𝑰𝑳-𝒁𝑶𝑵𝑬 ♛ 𝑴𝑰𝑵𝑰𝑴𝑨𝑷𝑨 ♛";
+
     var div = document.createElement('div');
     div.setAttribute('class', 'post block bc2');
-    div.innerHTML = '<div id="minimapbg" style="position: absolute; left: 0.6em; bottom: 4.1em;">' +
-        '<div class="posy" id="posyt" style="background-size: 100%; background-image: url(https://i.imgur.com/2qu5Wch.png); color: rgb(250, 250, 250); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 12px; padding: 10px;">' +
+    div.innerHTML = '<div id="minimapbg" style="position: absolute; left: 0.6em; bottom: 4.1em; z-index: 2;">' +
+        '<div class="posy" id="posyt" style="background-size: 100%; background-image: url(https://i.imgur.com/2qu5Wch.png); color: rgb(255, 255, 255); text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 12px; padding: 10px;">' +
         '<div id="minimap-text" style="display: none;"></div>' +
-        '<div id="minimap-box" style="position: relative;width:380px;height:260px">' +
+        '<div id="minimap-box" style="position: relative;width:400px;height:300px">' +
         '<canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
         '</div><div id="minimap-config" style="line-height:20px;">' +
-        '<span id="hide-map" style="cursor:pointer;">BRASIL-ZONE MINIMAP' +
-        '</span><span id="follow-mouse" style="cursor:pointer;"' +
-        '</span><span id="zoom-plus" style="cursor:pointer;font-weight:bold;"></span>' +
-        '<span id="zoom-minus" style="cursor:pointer;font-weight:bold;"></span>' +
+        '<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> <i class="em em-flag-br"></i> | <span id="hide-map" style="cursor:pointer;color:white">𝑴𝒊𝒏𝒊𝒎𝒊𝒛𝒂𝒓' +
+        '</span> | <span id="follow-mouse" style="cursor:pointer;">𝑺𝒆𝒈𝒖𝒊𝒓 𝒐 𝒎𝒐𝒖𝒔𝒆' +
+        '</span> | 𝒁𝒐𝒐𝒎: <span id="zoom-plus" style="cursor:pointer;font-weight:bold;">▲</span>' +
+        '<span id="zoom-minus" style="cursor:pointer;font-weight:bold;">▼</span>' +
+        ' | <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet"> <i class="em em-flag-br"></i><br />' + vers +
         '</div>' +
         '</div>';
     document.body.appendChild(div);
@@ -125,7 +98,7 @@ window.addEventListener('load', function () {
         document.getElementById("minimap-box").style.display = "none";
         document.getElementById("minimap-config").style.display = "none";
         document.getElementById("minimap-text").style.display = "block";
-        document.getElementById("minimap-text").innerHTML = "Mostrar mapa";
+        document.getElementById("minimap-text").innerHTML = "𝑬𝒙𝒑𝒂𝒏𝒅𝒊𝒓 𝒎𝒂𝒑𝒂";
         document.getElementById("minimap-text").style.cursor = "pointer";
     };
     document.getElementById("minimap-text").onclick = function () {
@@ -157,13 +130,13 @@ window.addEventListener('load', function () {
     document.getElementById("follow-mouse").onclick = function () {
         toggle_follow = !toggle_follow;
         if (toggle_follow) {
-            this.innerHTML = "Seguir o mouse";
+            this.innerHTML = "𝑺𝒆𝒈𝒖𝒊𝒓 𝒂 𝒕𝒆𝒍𝒂";
             loadTemplates();
             x_window = x;
             y_window = y;
             drawCursor();
         } else {
-            this.innerHTML = "Seguir a tela";
+            this.innerHTML = "𝑺𝒆𝒈𝒖𝒊𝒓 𝒐 𝒎𝒐𝒖𝒔𝒆";
             getCenter();
         }
     };
@@ -189,8 +162,9 @@ window.addEventListener('load', function () {
                 x_window = x;
                 y_window = y;
             } else {
-                drawCursor();
+				getCenter();
             }
+			drawCursor();
             loadTemplates();
         }
     }, false);
@@ -235,7 +209,7 @@ function toggleShow() {
         document.getElementById("minimap-box").style.display = "none";
         document.getElementById("minimap-config").style.display = "none";
         document.getElementById("minimap-text").style.display = "block";
-        document.getElementById("minimap-text").innerHTML = "Mostrar minimapa";
+        document.getElementById("minimap-text").innerHTML = "𝑬𝒙𝒑𝒂𝒏𝒅𝒊𝒓 𝒎𝒂𝒑𝒂";
         document.getElementById("minimapbg").onclick = function () {
             toggleShow()
         };
@@ -284,7 +258,7 @@ function loadTemplates() {
     //console.log("x_right : " + x_right);
     //console.log("y_top : " + y_top);
     //console.log("y_bottom : " + y_bottom);
-    //console.log(template_list);
+    console.log(template_list);
     var keys = [];
     for (var k in template_list) keys.push(k);
     needed_templates = [];
@@ -296,8 +270,10 @@ function loadTemplates() {
         var temp_y = parseInt(template_list[template]["y"]) * 1;
         var temp_xr = parseInt(template_list[template]["x"]) + parseInt(template_list[template]["width"]);
         var temp_yb = parseInt(template_list[template]["y"]) + parseInt(template_list[template]["height"]);
+
          if (temp_xr <= x_left || temp_yb <= y_top || temp_x >= x_right || temp_y >= y_bottom)
             continue
+		console.log(x_window + ", " + y_window);
         if (!x_window.between(temp_x, temp_xr) && !y_window.between(temp_y, temp_yb))
             continue
         console.log("Template " + template + " is in range!");
@@ -308,7 +284,7 @@ function loadTemplates() {
         if (zooming_in == false && zooming_out == false) {
             document.getElementById("minimap-box").style.display = "none";
             document.getElementById("minimap-text").style.display = "block";
-            document.getElementById("minimap-text").innerHTML = "Não há templates.";
+            document.getElementById("minimap-text").innerHTML = "𝑵𝒂̃𝒐 𝒉𝒂́ 𝒕𝒆𝒎𝒑𝒍𝒂𝒕𝒆𝒔 𝒂𝒒𝒖𝒊";
         }
     } else {
         document.getElementById("minimap-box").style.display = "block";
@@ -404,8 +380,8 @@ function drawCursor() {
 
 function getCenter() {
     var url = window.location.href;
-    x_window = url.replace(re, '$2');
-    y_window = url.replace(re, '$3');
+    x_window = +url.split("?p=")[1].split(",")[0];
+    y_window = ++url.split("?p=")[1].split(",")[1];
     if (x_window == url || y_window == url) {
         x_window = 0;
         y_window = 0;
