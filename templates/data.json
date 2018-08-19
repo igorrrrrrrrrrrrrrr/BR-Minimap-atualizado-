@@ -327,6 +327,12 @@
     "y": 2979,
     "width": 257,
     "height": 83
-  }
+  },
+  "planta": {
+    "name": "planta.png",
+    "x": 3195,
+    "y": 2823,
+    "width": 60,
+    "height": 109
 }
 
